@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Employees Crud</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+        <link rel="stylesheet" href="{% static '/css/styles.css' %}" />
+    </head>
+    <body>
+        <div class="container">
+            <center>
+                <h2 class="mt-5">Crud Operation Using Employee Records</h2>
+                <hr>
+                <a href="{% url 'showEmployee' %}" style="font-size: 20px;">Go to Home Page</a>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <table border="1">
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>
+                                <input type="text" name="emp_name" placeholder="Employee name..."/>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Employee Age</th>
+                            <th>
+                                <input type="text" name="emp_age" placeholder="Employee Age..."/>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Employee Phone</th>
+                            <th>
+                                <input type="text" name="emp_phone" placeholder="Employee Phone..."/>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Gender</th>
+                            <th>
+                                <input type="radio" name="gender" value="M">Male  | <input type="radio" name="gender" value="F">Female
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Salary</th>
+                            <th>
+                                <input type="text" name="salary" placeholder="Employee salary..."/>                                
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="submit" value="Insert">
+                            </th>
+                            <th>
+                                {% if messages %}
+                                {% for mess in messages %}
+                                    {% if color == 'red' %}
+                                        <b style="color: red">{{mess}}</b>
+                                    {% elif color == 'green' %}
+                                        <b style="color: green">{{mess}}</b>
+                                    {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </th>
+                        </tr>
+                    </table>
+                </form>
+            </center>
+        </div>
+    </body>
+</html>
